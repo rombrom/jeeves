@@ -1,0 +1,7 @@
+[user]
+	email = jeeves@host.container.internal
+	name = Jeeves
+
+[status]
+	branch = true
+

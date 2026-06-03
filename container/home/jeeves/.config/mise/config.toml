@@ -1,0 +1,9 @@
+[env]
+MISE_NODE_COREPACK = true
+
+[tools]
+node = "26.1.0"
+
+[settings]
+[settings.ruby]
+compile = false

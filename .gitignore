@@ -1,0 +1,5 @@
+.env
+
+# Consumer config overrides (keep .keep for directory presence)
+config/
+!config/.keep
