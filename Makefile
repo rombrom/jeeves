@@ -24,6 +24,7 @@ run: stop ## Start the container (exit any existing before running)
 		--memory 2GB \
 		--rm \
 		--ssh \
+		--volume jeeves-claude:$(JEEVES_HOME)/.claude \
 		--volume jeeves-pi:$(JEEVES_HOME)/.pi \
 		--volume $(CURDIR)/config:/config:ro \
 		--volume $(WORKDIR_HOST):$(WORKDIR) \
