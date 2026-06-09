@@ -30,7 +30,7 @@ run: stop ## Start the container (exit any existing before running)
 		$(IMAGE_NAME):$(TAG)
 
 stop: ## Stop and remove the running container
-	$(CONTAINER) stop $(CONTAINER_NAME)
+	-$(CONTAINER) stop $(CONTAINER_NAME)
 
 sync: ## Synchronize jeeves filesystem in JEEVESDIR with container
 	$(CONTAINER) exec $(CONTAINER_NAME) /entrypoint.sh
