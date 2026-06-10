@@ -28,8 +28,14 @@ run: stop ## Start the container (exit any existing before running)
 		--volume $(WORKDIR_HOST):$(WORKDIR) \
 		$(IMAGE_NAME):$(TAG)
 
+start: ## Start the container if it exists
+	$(CONTAINER) start $(CONTAINER_NAME)
+
 stop: ## Stop and remove the running container
 	-$(CONTAINER) stop $(CONTAINER_NAME)
+
+kill: stop ## Stop and delete the container
+	$(CONTAINER) delete $(CONTAINER_NAME)
 
 sync: ## Synchronize jeeves filesystem in JEEVESDIR with container
 	$(CONTAINER) exec $(CONTAINER_NAME) /entrypoint.sh
@@ -45,5 +51,5 @@ help: ## Show this help message
 	@echo "Targets:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(firstword $(MAKEFILE_LIST)) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: build run stop clean help sync
+.PHONY: build run start stop kill clean help sync
 
