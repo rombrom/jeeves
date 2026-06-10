@@ -22,10 +22,8 @@ run: stop ## Start the container (exit any existing before running)
 		--env-file .env \
 		--name $(CONTAINER_NAME) \
 		--memory 2GB \
-		--rm \
 		--ssh \
-		--volume jeeves-claude:$(JEEVES_HOME)/.claude \
-		--volume jeeves-pi:$(JEEVES_HOME)/.pi \
+		--user jeeves \
 		--volume $(CURDIR)/config:/config:ro \
 		--volume $(WORKDIR_HOST):$(WORKDIR) \
 		$(IMAGE_NAME):$(TAG)

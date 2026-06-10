@@ -19,7 +19,6 @@ RUN groupadd -g 1000 ${JEEVES_USER} && \
   useradd -m -g ${JEEVES_USER} -u 1000 -s /usr/bin/bash ${JEEVES_USER}
 
 COPY container/. /
-RUN chown -R ${JEEVES_USER}:${JEEVES_USER} ${JEEVES_HOME}
 
 RUN apt-get update && apt-get install -qy \
   build-essential \
@@ -72,6 +71,8 @@ RUN find ${JEEVES_HOME}/.pi -name "*.patch" -type f | while read -r patchfile; d
   basename=$(basename "$patchfile" .patch); \
   cd "$patchdir" && [ -f "$basename" ] && patch < "$patchfile"; \
   done
+
+RUN chown -R ${JEEVES_USER}:${JEEVES_USER} ${JEEVES_HOME} ${MISE_DATA_DIR}
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
