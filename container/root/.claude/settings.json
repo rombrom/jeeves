@@ -1,0 +1,9 @@
+{
+  "env": {
+    "IS_SANDBOX": "1"
+  },
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  },
+  "skipDangerousModePermissionsPrompt": true
+}

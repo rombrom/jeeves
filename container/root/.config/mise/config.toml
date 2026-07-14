@@ -2,7 +2,7 @@
 MISE_NODE_COREPACK = true
 
 [tools]
-node = "26.1.0"
+node = "26.5.0"
 
 [settings]
 [settings.ruby]
