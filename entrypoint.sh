@@ -5,19 +5,19 @@ log() {
   echo "[entrypoint] $@"
 }
 
-# Bootstrap defaults from image (idempotent — skips existing files)
-if [ -d /opt/defaults ]; then
-  log "Bootstrapping defaults..."
-  rsync -a /opt/defaults/ /
-fi
-
 # Sync repo-managed config from /opt/config/ to /root/.pi/agent/
 if [ -d /opt/config ]; then
   log "Syncing repo-managed config..."
   rsync -a --update /opt/config/ /root/
 fi
 
-sudo sysctl -p
+log "Installing Pi packages..."
+for pkg in $(jq -r < ~/.pi/agent/settings.json '.packages[]'); do
+  pi install "$pkg"
+done
+
+log "Applying kernel settings..."
+sysctl --system || true
 
 log "Ready."
 

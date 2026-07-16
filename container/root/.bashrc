@@ -1,9 +1,5 @@
 export PATH="/mise/shims:$PATH"
 
-# Very dumb but when in project directories with other tools installed
-# pi won't boot because there's no default global node version.
-alias pi='mise exec node@26 -- pi'
-
 eval "$(dircolors)"
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -l'

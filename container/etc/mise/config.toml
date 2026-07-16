@@ -2,7 +2,9 @@
 MISE_NODE_COREPACK = true
 
 [tools]
-node = "26.5.0"
+claude = "latest"
+node = "latest"
+pi = "latest"
 
 [settings]
 [settings.ruby]
